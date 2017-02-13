@@ -5,10 +5,6 @@
  */
 package com.tomkoukoulis.ranking.model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,32 +16,15 @@ public class JournalTest {
     
     public JournalTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of compareTo method, of class Journal.
      */
     @Test
-    public void testCompareToHigherScore() {
-        System.out.println("compareTo");
+    public void testCompareToHigherScore() throws ObjectConstructionException {
         Journal journalA = new Journal("Journal A", 5.6f, 2015);
         Journal journalB = new Journal("Journal B", 3.1f, 2015);
-        int expResult = -1;
+        int expResult = 1;
         int result = journalB.compareTo(journalA);
         assertEquals(expResult, result);
     }
@@ -54,11 +33,10 @@ public class JournalTest {
      * Test of compareTo method, of class Journal.
      */
     @Test
-    public void testCompareToLowerScore() {
-        System.out.println("compareTo");
+    public void testCompareToLowerScore() throws ObjectConstructionException {
         Journal journalA = new Journal("Journal B", 3.1f, 2015);
         Journal journalB = new Journal("Journal A", 5.6f, 2015);
-        int expResult = 1;
+        int expResult = -1;
         int result = journalB.compareTo(journalA);
         assertEquals(expResult, result);
     }    
@@ -67,8 +45,7 @@ public class JournalTest {
      * Test of compareTo method, of class Journal.
      */
     @Test
-    public void testCompareToSameScoreSameName() {
-        System.out.println("compareTo");
+    public void testCompareToSameScoreSameName() throws ObjectConstructionException {
         Journal journalA = new Journal("Journal A", 3.1f, 2015);
         Journal journalB = new Journal("Journal A", 3.1f, 2015);
         int expResult = 0;
@@ -80,8 +57,7 @@ public class JournalTest {
      * Test of compareTo method, of class Journal.
      */
     @Test
-    public void testCompareToSameScoreHigherName() {
-        System.out.println("compareTo");
+    public void testCompareToSameScoreHigherName() throws ObjectConstructionException {
         Journal journalB = new Journal("Journal B", 6.2f, 2014);
         Journal journalC = new Journal("Journal C", 6.2f, 2014);
         int expResult = 1;
@@ -93,8 +69,7 @@ public class JournalTest {
      * Test of compareTo method, of class Journal.
      */
     @Test
-    public void testCompareToSameScoreLowerName() {
-        System.out.println("compareTo");
+    public void testCompareToSameScoreLowerName() throws ObjectConstructionException {
         Journal journalC = new Journal("Journal C", 6.2f, 2014);
         Journal journalB = new Journal("Journal B", 6.2f, 2014);
         int expResult = -1;

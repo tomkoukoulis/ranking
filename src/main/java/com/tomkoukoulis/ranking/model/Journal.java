@@ -14,6 +14,7 @@ public class Journal implements Comparable<Journal> {
     protected float score;
     protected int year;
     protected int rank;
+    protected boolean isReviewJournal;
 
     public String getName() {
         return name;
@@ -35,14 +36,25 @@ public class Journal implements Comparable<Journal> {
         this.rank = rank;
     }
     
-    public Journal(String name, float score, int year) {
+    public boolean isReviewJournal() {
+        return isReviewJournal;
+    }
+    
+    public void setReviewJournal(boolean isReviewJournal) {
+        this.isReviewJournal = isReviewJournal;
+    }
+    
+    public Journal(String name, float score, int year) throws ObjectConstructionException {
+        if (score < 0) throw new ObjectConstructionException("Score is lower than zero");
         this.name = name;
         this.score = score;
         this.year = year;     
     }
 
     public int compareTo(Journal journal) {   
-        int compare = Float.compare(this.score, journal.score);
+        int descendingOrder = Float.compare(journal.score, this.score);
+        //int ascendingOrder = Float.compare(this.score, journal.score);
+        int compare = descendingOrder;
         
         if (compare == 0) {
             compare = name.compareTo(journal.name);
